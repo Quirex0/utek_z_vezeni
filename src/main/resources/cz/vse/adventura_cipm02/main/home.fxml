@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cz.vse.adventura_cipm02.main.HomeController">
+  <columnConstraints>
+    <ColumnConstraints hgrow="SOMETIMES" />
+  </columnConstraints>
+  <rowConstraints>
+    <RowConstraints vgrow="NEVER" />
+    <RowConstraints maxHeight="486.79998168945315" minHeight="256.3999877929688" prefHeight="473.9999938964844" vgrow="NEVER" />
+    <RowConstraints maxHeight="459.6000122070312" minHeight="229.20001831054685" prefHeight="242.0000061035156" vgrow="SOMETIMES" />
+      <RowConstraints valignment="CENTER" vgrow="NEVER" />
+      <RowConstraints valignment="CENTER" vgrow="NEVER" />
+  </rowConstraints>
+   <children>
+      <MenuBar GridPane.columnSpan="2147483647">
+        <menus>
+          <Menu mnemonicParsing="false" text="Hra">
+            <items>
+              <MenuItem mnemonicParsing="false" onAction="#ukoncitHru" text="Ukončit" />
+              <MenuItem onAction="#napovedaKlik" text="Nápověda" />
+                <MenuItem onAction="#novaHraKlik" text="Nová Hra" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+      <HBox spacing="10.0" GridPane.rowIndex="3">
+         <children>
+            <TextField fx:id="vstup" onAction="#odesliVstup" HBox.hgrow="ALWAYS">
+               <padding>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </padding>
+            </TextField>
+            <Button fx:id="tlacitkoOdesli" mnemonicParsing="false" onAction="#odesliVstup" text="Send">
+               <padding>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </padding>
+            </Button>
+         </children>
+         <padding>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </padding>
+      </HBox>
+      <SplitPane dividerPositions="0.31806806806806803, 0.587087087087087, 0.7447447447447447" GridPane.rowIndex="2">
+         <items>
+            <ListView fx:id="panelVychodu" onMouseClicked="#klikPanelVychodu" />
+            <TextArea fx:id="vystup" editable="false" prefWidth="252.0" />
+            <ListView fx:id="panelPredmetu" onMouseClicked="#klikPanelPredmetu" />
+            <GridPane>
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints maxHeight="115.60001220703126" minHeight="10.0" prefHeight="44.800024414062506" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="213.19998779296876" minHeight="10.0" prefHeight="195.9999755859375" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <GridPane>
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="82.199951171875" minWidth="10.0" prefWidth="44.599951171875" />
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="83.200048828125" minWidth="10.0" prefWidth="83.200048828125" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="82.20007324218751" minWidth="10.0" prefWidth="62.39997558593748" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <Button fx:id="tlacitkoSebevrazda" mnemonicParsing="false" onAction="#provedPrikazSebevrazda" text="Sebevrazda" GridPane.columnIndex="1">
+                           <GridPane.margin>
+                              <Insets />
+                           </GridPane.margin>
+                        </Button>
+                      <Button fx:id="tlacitkoPobodat" mnemonicParsing="false" onAction="#provedPrikazPobodat" text="Pobodat" GridPane.columnIndex="2">
+                           <GridPane.margin>
+                              <Insets />
+                           </GridPane.margin>
+                        </Button>
+                     </children>
+                  </GridPane>
+                  <Button fx:id="tlacitkoMluv" mnemonicParsing="false" onAction="#provedPrikazMluv" text="Mluv">
+                     <GridPane.margin>
+                        <Insets />
+                     </GridPane.margin>
+                  </Button>
+                  <VBox GridPane.rowIndex="1">
+                     <children>
+                        <TitledPane animated="false" text="Vyber si věc, kterou chceš dát">
+                           <content>
+                              <ListView fx:id="panelDej" onMouseClicked="#klikPanelDej" />
+                           </content>
+                        </TitledPane>
+                        <TitledPane animated="false" text="Inventar">
+                           <content>
+                              <ListView fx:id="panelBatoh" onMouseClicked="#klikPanelBatoh" />
+                           </content>
+                        </TitledPane>
+                     </children>
+                  </VBox>
+               </children>
+            </GridPane>
+         </items>
+      </SplitPane>
+      <TitledPane text="Mapa" GridPane.rowIndex="1">
+         <content>
+            <Pane prefHeight="621.0" prefWidth="799.0">
+               <children>
+                  <ImageView fitHeight="533.0" fitWidth="535.0" layoutX="132.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@herniPlan.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="hrac" fitHeight="74.0" fitWidth="58.0" layoutX="260.0" layoutY="129.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@hrac.jpg" />
+                     </image>
+                  </ImageView>
+               </children>
+            </Pane>
+         </content>
+      </TitledPane>
+   </children>
+</GridPane>
